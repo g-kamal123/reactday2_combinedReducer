@@ -1,34 +1,28 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-// import { addcontactActions } from "../actions/Addcontact-slice";
-// import { ShowcontactActions } from "../actions/Showcontact-slice";
 import classes from "../styles/ContactList.module.css";
-// import { showcontactReducer } from "../actions/Showcontact-slice";
 
 const ContactList = () => {
   const list = useSelector((state) => state.addcontactReducer.all);
   const show = useSelector((state) => state.showcontactReducer.showone);
-  // console.log(show)
+
   const dispatch = useDispatch();
   const deleteHandler = (val) => {
-    // console.log(val);
-    // dispatch(addcontactActions.deletecontactHandler(val));
+   //dispatching action to delete the contact in the list
     dispatch({
       type: "Del",
       data: val,
     });
   };
   const btnHandler = (index) => {
-    // dispatch(ShowcontactActions.show({
-    //   data:list,
-    //   index:i
-    // }))
+    //dispatching action to view the contact number
     dispatch({
       type: "View",
       payload: { list, index },
     });
   };
   const closeView =(index)=>{
+    //dispatching action to close view of that contact
     dispatch({
       type:'closeView',
       index
